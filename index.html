@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Elephant</title>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+	<link href="css/style.css" rel="stylesheet">
+
+	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="js/jquery.maskedinput.min.js"></script>
+	<script type="text/javascript" src="js/jquery.validate.js"></script>
+	<script src="js/myscript.js"></script>
+	<link href="css/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-8 col-sm-offset-2">
+				<div class="page-header">
+					<div class="alert alert-info" role="alert">
+						
+						<ul>
+							<li><a href="login.html" class="alert-link">Admin</a>.</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="panel panel-default">
+					<div "class="panel-heading">
+						<h3 class="panel-title">Simple Form</h3>
+					</div>
+					<div id="output" class="panel-body">
+						<form id="signupForm" method="post" class="form-horizontal" action="">
+							<div class="form-group">
+								<label class="col-sm-4 control-label" for="firstname">First name</label>
+								<div class="col-sm-5">
+									<input type="text" class="form-control" id="firstname" name="firstname" placeholder="First name" />
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-4 control-label" for="lastname">Last name</label>
+								<div class="col-sm-5">
+									<input type="text" class="form-control" id="lastname" name="lastname" placeholder="Last name" />
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-4 control-label" for="email">Email</label>
+								<div class="col-sm-5">
+									<input type="text" class="form-control" id="email" name="email" placeholder="Email" />
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-4 control-label" for="username">Country</label>
+								<div class="col-sm-5">
+									<input type="text" class="form-control" id="country" name="country" placeholder="Country" />
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-4 control-label" for="username">Planned token</label>
+								<div class="col-sm-5">
+									<input type="text" class="form-control" id="ptoken" name="ptoken" placeholder="Planned token" />
+								</div>
+							</div>		
+
+							<div class="form-group">
+								<label class="col-sm-4 control-label" for="username">Ethereum adress</label>
+								<div class="col-sm-7">
+									<input 
+									type="text" 
+									class="form-control" 
+									id="ethereum"
+									name="ethereum" 
+									placeholder="Ethereum adress" />
+								</div>
+							</div>						
+							
+
+							<div class="form-group">
+								<div class="col-sm-5 col-sm-offset-4">
+									<div class="checkbox">
+										<label>
+											<input type="checkbox" id="agree" name="agree" value="agree" />Please agree to our policy
+										</label>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<div class="col-sm-9 col-sm-offset-4">
+									<button type="submit" class="btn btn-primary" name="signup" value="Sign up">Send</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+
+				
+			</div>
+		</div>
+	</div>
+
+<div id="modal_form">
+      <span id="modal_close">X</span>
+      <div id="inmycont"></div>
+     
+		<button id="modal_close1" class="btn btn-success" name="Close" value="Sign up">OK</button>
+		
+</div>
+<div id="overlay"></div>
+
+</body>
+</html>
