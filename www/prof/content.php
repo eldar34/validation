@@ -140,6 +140,8 @@ echo '<li><a href="content.php?page='. $page .'">' . $page . '</a></li>';
 
 }
 
+
+
     
         
     
@@ -154,6 +156,9 @@ echo <<<HERE
 
         
       </div>
+    </div>
+    <div class="text-center">
+    <a role="button" class="btn btn-success" href="fileCreator.php">Download</a>
     </div>
   </div>
 
