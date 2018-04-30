@@ -12,6 +12,65 @@ exit;
 
 ?>
 
+<?php
+require_once '../blocks/testField.php';
+
+function downloadTable(){
+  
+    include("../blocks/bd.php");
+
+
+    $sql = "SELECT * FROM records ";
+    $result2 = $pdo->query($sql);
+
+
+    $filename = 'my.csv';
+    $delimetr = ";";
+
+    $fp = fopen($filename, "w+");
+
+
+
+
+    while($myrow2 = $result2->fetch()){
+  
+
+      fputcsv($fp, $myrow2, $delimetr);
+
+    }
+
+    fclose($fp);
+
+
+    header('Content-Type: csv');
+    header('Content-Disposition: attachment; filename="my.csv"');
+    readfile($filename);
+
+  
+}
+
+/*function printMe(){
+  echo "<pre>";
+  echo print_r($_POST);
+  echo "</pre>";
+}*/
+
+if(isset($_POST['getTable'])){
+  $tableId = $_POST['getTable'];
+  $test = new testField();
+  if($test->forname($tableId)){$userList = $tableId;}else{unset($tableId);}
+
+  if($userList == 'Download'){
+    downloadTable();
+  }
+  
+  
+}
+
+
+
+?>
+
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -20,6 +79,9 @@ exit;
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="../../css/bootstrap.css" rel="stylesheet"> 
+    <script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../js/myscript2.js"></script>
+    
 </head>
 
 <body>
@@ -158,7 +220,9 @@ echo <<<HERE
       </div>
     </div>
     <div class="text-center">
-    <a role="button" class="btn btn-success" href="fileCreator.php">Download</a>
+      <form method="post">
+        <input class="btn btn-success" type="submit" name="getTable" value="Download">
+      </form>
     </div>
   </div>
 
