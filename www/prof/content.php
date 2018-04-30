@@ -29,7 +29,9 @@ function downloadTable(){
 
     $fp = fopen($filename, "w+");
 
+    $myrow3 = ["id", "First name", "Last name", "e-mail", "Country", "Planned token", "Ethereum adress", "ChekBox"];
 
+    fputcsv($fp, $myrow3, $delimetr);
 
 
     while($myrow2 = $result2->fetch()){
@@ -45,6 +47,7 @@ function downloadTable(){
     header('Content-Type: csv');
     header('Content-Disposition: attachment; filename="my.csv"');
     readfile($filename);
+    exit();
 
   
 }
@@ -80,7 +83,7 @@ if(isset($_POST['getTable'])){
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="../../css/bootstrap.css" rel="stylesheet"> 
     <script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
-    <script src="../../js/myscript2.js"></script>
+    
     
 </head>
 
