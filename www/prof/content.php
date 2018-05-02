@@ -93,29 +93,21 @@ if(isset($_POST['getTable'])){
 
 
 include("../blocks/bd.php");
+require_once '../blocks/pagination.php';
 
 $result4 = $pdo->query("SELECT * FROM records");
 
+$pagination = new Pagination();
 
-
-$num = 5;
-
-
-
-if(!isset($_GET['page'])){
-  $page = 1;
-}else{
-
-  if(intval($_GET['page'])){
-    $page = intval($_GET['page']);
-  }else{
-    $page = 1;
-  }
-}
+$num = $pagination->num;
 
 
 
-$this_page_first_result = ($page - 1) * $num;
+$page = $pagination->Page();
+
+
+
+$this_page_first_result = $pagination->forLimit();
 
 
 
@@ -196,14 +188,54 @@ while($myrow2 = $result2->fetch()){
 
 
 
-echo "</tbody></table><div class='col-lg-10 col-lg-offset-5'>
- <nav aria-label='Pagi'><ul class='pagination'>";
-   
-for($page=1;$page<=$number_of_pages;$page++){
+echo "</tbody></table><div class='text-center'>
+ <nav aria-label='Pagi'><ul class='pagination'>
+ ";
+$paginationCtrls = '';
 
-echo '<li><a href="content.php?page='. $page .'">' . $page . '</a></li>';
 
+if($number_of_pages != 1){
+
+    if ($page > 3) {
+
+        $paginationCtrls .= '<a href="content.php?page=1" class="btn btn-default" role="button"><b><< </b></a>;';
+    }   
+    if ($page > 1) {
+        $previous = $page - 1;
+        $paginationCtrls .= '<a href="content.php?page='.$previous.'" class="btn btn-default" role="button"><b>< </b></a>';
+
+        for($i = $page-2; $i < $page; $i++){
+            if($i > 0){
+                $paginationCtrls .= '<a href="content.php?page='.$i.'" class="btn btn-default" role="button">'.$i.'</a>';
+            }
+        }
+    }
+
+    $paginationCtrls .= '<p color:black; class="btn btn-default" role="button"><b>'.$page.'</b></p>';
+
+    for($i = $page+1; $i <= $number_of_pages; $i++){
+        $paginationCtrls .= '<a href="content.php?page='.$i.'" class="btn btn-default" role="button">'.$i.'</a>';
+        if($i >= $page+2){
+            break;
+        }
+    }
+
+    if ($page != $number_of_pages) {
+        $next = $page + 1;
+        $paginationCtrls .= '<a href="content.php?page='.$next.'" class="btn btn-default" role="button"><b>></b></a> ';
+    }
+        if ($page < $number_of_pages-2) {
+
+        $paginationCtrls .= '<a href="content.php?page='.$number_of_pages.'" class="btn btn-default" role="button"><b> >></b></a>';
+    }
 }
+
+echo $paginationCtrls;
+
+
+
+
+
 
 
 
