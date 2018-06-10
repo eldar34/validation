@@ -198,7 +198,7 @@ if($number_of_pages != 1){
 
     if ($page > 3) {
 
-        $paginationCtrls .= '<a href="content.php?page=1" class="btn btn-default" role="button"><b><< </b></a>;';
+        $paginationCtrls .= '<a href="content.php?page=1" class="btn btn-default" role="button"><b><< </b></a>&nbsp;';
     }   
     if ($page > 1) {
         $previous = $page - 1;

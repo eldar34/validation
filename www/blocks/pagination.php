@@ -3,7 +3,7 @@
 class Pagination {
 
 
-	public $num = 4;
+	public $num = 5;
 
 	function Page(){
 
